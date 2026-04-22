@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Cita{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Registrar Nueva Cita
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('agendar') }}">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de la mascota</label>
+                        <input type="text" name="mascota" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Propietario</label>
+                        <input type="text" name="propietario" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Especie</label>
+                        <select name="especie" class="form-select" required>
+                            <option value="" disabled selected>Seleccionar...</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Ave">Ave</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fecha</label>
+                        <input type="date" name="fecha" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                    <a href="{{ url_for('agenda') }}" class="btn btn-secondary w-100 mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

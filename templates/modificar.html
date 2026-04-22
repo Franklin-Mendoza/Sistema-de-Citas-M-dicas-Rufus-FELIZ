@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Modificar Cita{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Modificar Cita
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('modificar', id=cita.id) }}">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de la mascota</label>
+                        <input type="text" name="mascota" class="form-control" value="{{ cita.mascota }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Propietario</label>
+                        <input type="text" name="propietario" class="form-control" value="{{ cita.propietario }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Especie</label>
+                        <select name="especie" class="form-select" required>
+                            {% for op in ['Perro', 'Gato', 'Ave', 'Otro'] %}
+                            <option value="{{ op }}" {% if cita.especie == op %}selected{% endif %}>{{ op }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fecha</label>
+                        <input type="date" name="fecha" class="form-control" value="{{ cita.fecha }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Guardar cambios</button>
+                    <a href="{{ url_for('agenda') }}" class="btn btn-secondary w-100 mt-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
